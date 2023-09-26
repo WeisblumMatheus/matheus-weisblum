@@ -3,62 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Portfólio</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin-top: 300px;
+        }
+
+        .question {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 0 10px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        #nao-button {
+            position: absolute;
+        }
+
+        @keyframes moveButton {
+            0% {
+                transform: translate(0);
+            }
+            100% {
+                transform: translate(20px, 20px);
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Meu Portfólio</h1>
-        <nav>
-            <ul>
-                <li><a href="#sobre">Sobre Mim</a></li>
-                <li><a href="#formacao">Formação</a></li>
-                <li><a href="#portfolio">Portfólio</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <section id="sobre">
-        <h2>Sobre Mim</h2>
-        <p>Olá, eu sou Matheus Andrade Weisblum. Eu tenho interesse em java e python e um maior interesse por backend.</p>
-    </section>
-    
-    <section id="formacao">
-        <h2>Formação e Idiomas</h2>
-        <p>Sou graduando pela UNINTER em Análise e Desenvolvimento de Sistemas e tenho inglês avançado.</p>
-    </section>
-    
-    <section id="portfolio">
-        <h2>Portfólio</h2>
-        <p>Aqui estão alguns dos meus projetos:</p>
-        <ul>
-            <li><a href="link-para-projeto-1.html">...</a></li>
-            <li><a href="link-para-projeto-2.html">...</a></li>
-            <!-- Adicione mais projetos conforme necessário -->
-        </ul>
-    </section>
-    
-    <section id="contato">
-        <h2>Contato</h2>
-        <form id="contact-form">
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" required>
-            
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            
-            <label for="mensagem">Mensagem:</label>
-            <textarea id="mensagem" name="mensagem" required></textarea>
-            
-            <button type="submit">Enviar</button>
-        </form>
-    </section>
-    
-    <footer>
-        <p>&copy; 2023 Meu Portfólio</p>
-    </footer>
+    <div class="container">
+        <div class="question">Você quer vir aqui em casa?</div>
+        <div class="button-container">
+            <button class="button" id="sim-button">Sim</button>
+            <button class="button" id="nao-button" disabled>Não</button>
+        </div>
+    </div>
 
-    <script src="main.js"></script>
+    <script>
+        function moveButtonRandomly() {
+            const button = document.getElementById("nao-button");
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+
+            const randomX = Math.random() * (screenWidth - button.clientWidth);
+            const randomY = Math.random() * (screenHeight - button.clientHeight);
+
+            button.style.left = `${randomX}px`;
+            button.style.top = `${randomY}px`;
+        }
+
+        document.getElementById("sim-button").addEventListener("click", function () {
+            alert("Sabe muito!");
+        });
+
+        document.getElementById("nao-button").addEventListener("mouseover", function () {
+            moveButtonRandomly();
+        });
+    </script>
 </body>
 </html>
